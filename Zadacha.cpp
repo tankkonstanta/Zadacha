@@ -15,27 +15,30 @@
 
 int main()
 {
-    //Input:
+    //INPUT:
     double s = getInput("s, litres (volume of pool)");
     double v = getInput("v, litres/minuter (delta of speeds of pipe)");
     double t = getInput("t, minutes (delta of times to fill up the swim)");
     
-    //Math: calculate result: 1) calculate t1, 2) calculate V1
-    //1)calculate t1
-    double b{v * t};;
+    //MATH: calculate result: 1) calculate t1, 2) calculate V1
+    //1) calculate t1
+    double b{ -( v * t ) };
     double a{ v };
-    double c{ t };
-    double D{ pow( b, 2 ) - ( 4 * a * c )};
+    double c{ -( s * t ) };
+    double D{ pow( b, 2 ) - ( 4 * a * c ) };
 
+    /*
     if (D < 0)
     {
         printEr("Disriminant < 0.");
         return 0;
     }
+    */
 
-    double x1{ -( -b + pow(D, 0.5)) / 2 * a };
-    double x2{ -( -b - pow(D, 0.5)) / 2 * a };
+    double x1{ ( -b + pow( D, 0.5 ) ) / ( 2 * a ) };
+    double x2{ ( -b - pow( D, 0.5 ) ) / ( 2 * a ) };
 
+    /*
     if (x1 == t)
     {
         double x1 = x2;
@@ -44,13 +47,21 @@ int main()
     {
         double x2 = x1;
     }
+    */
 
-    //2)calculate V1
+    //2) calculate V1
     double V1{ s / x1 };
     double V_1{ s / x2 };
 
-    //Print:
-    std::cout << "Final result(speed of pipe #1): " << V1 << '\t' << '\t' << V_1;
+    //CHECK:
+    if (V1 == s / (((v * t) + pow(pow(-(v * t), 2) - (4 * v * -(s * t)), 0.5)) / (2 * v)))
+        std::cout << "[check is true]" << '\n';
+    else
+        printEr("check is false.");
+
+    //PRINT:
+    std::cout << "Final result(speed of pipe #1): " << V1 << '\n';
+    //std::cout << "Irrational result(speed of pipe #1): " << V_1 << '\n'; //(uncomment to see irrational result)
 
     return 0;
 }
