@@ -20,6 +20,7 @@ int main()
     double v = getInput("v, litres/minuter (delta of speeds of pipe)");
     double t = getInput("t, minutes (delta of times to fill up the swim)");
     
+
     //MATH: calculate result: 1) calculate t1, 2) calculate V1
     //1) calculate t1
     double b{ -( v * t ) };
@@ -53,11 +54,13 @@ int main()
     double V1{ s / x1 };
     double V_1{ s / x2 };
 
+
     //CHECK:
     if (V1 == s / (((v * t) + pow(pow(-(v * t), 2) - (4 * v * -(s * t)), 0.5)) / (2 * v)))
         std::cout << "[check is true]" << '\n';
     else
         printEr("check is false.");
+
 
     //PRINT:
     std::cout << "Final result(speed of pipe #1): " << V1 << '\n';
