@@ -5,7 +5,7 @@
 
 void printEr(std::string text)
 {
-    std::cout << "\n\n==========\nERROR:" << text << "\n==========\n\n\n\a";
+    std::cout << "\n\n==========\nERROR: " << text << "\n==========\n\n\n\a";
 }
 
 double getInput(std::string name)
